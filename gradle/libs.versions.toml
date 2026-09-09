@@ -1,8 +1,13 @@
 [versions]
-
+# 依赖/插件版本统一在此维护，供各构建脚本通过 libs.* 引用
+spring-boot = "4.1.1"
+dependency-management = "1.1.7"
+checkstyle = "10.21.2"
 
 [libraries]
 
-[bundles]
-
 [plugins]
+# Spring Boot Gradle 插件（仅 assassin-example 应用）
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+# 依赖管理插件（统一导入 spring-boot-dependencies BOM 到各 java 子模块）
+dependency-management = { id = "io.spring.dependency-management", version.ref = "dependency-management" }

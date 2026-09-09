@@ -8,3 +8,9 @@ pluginManagement {
 }
 
 rootProject.name = "assassin"
+
+include("assassin-bom")
+include("assassin-core")
+include("autoconfigure:assassin-web-autoconfigure")
+include("starter:assassin-web-spring-boot-starter")
+include("assassin-example")

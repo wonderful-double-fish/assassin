@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!--
+    assassin 工程代码规范检查规则。
+
+    约定的编码风格：
+      1. 缩进 4 空格，禁止 TAB，行尾不保留空格，文件末尾以换行结束（LF）。
+      2. 单行最长 120 字符（import/package 行与注释行除外）。
+      3. 禁止通配符 import 与未使用/冗余 import；import 的顺序交由 IDE 自动格式化维护。
+      4. 命名遵循 Java 惯例；public 类/接口/枚举/注解/record 及 public 方法需书写 Javadoc。
+-->
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+
+    <module name="FileTabCharacter"/>
+    <module name="NewlineAtEndOfFile">
+        <property name="lineSeparator" value="lf"/>
+    </module>
+
+    <!-- 行宽：package/import 与注释行不受限（LineLength 属于 Checker 层模块，需放在 TreeWalker 外层） -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="ignorePattern" value="^(package |import |\s*\*|\s*//|@)"/>
+    </module>
+
+    <module name="TreeWalker">
+        <module name="ArrayTypeStyle"/>
+        <module name="AvoidStarImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="true"/>
+        </module>
+
+        <!-- 行尾不允许空白字符 -->
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="\s+$"/>
+            <property name="message" value="Line has trailing spaces."/>
+        </module>
+
+        <module name="EmptyCatchBlock">
+            <property name="exceptionVariableName" value="^(ignore|ignored|expected)$"/>
+        </module>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="ModifierOrder"/>
+        <module name="NeedBraces"/>
+        <module name="OneStatementPerLine"/>
+        <module name="StringLiteralEquality"/>
+        <module name="UpperEll"/>
+
+        <!-- 命名规范 -->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+        </module>
+        <module name="TypeName"/>
+        <module name="ClassTypeParameterName"/>
+        <module name="MethodTypeParameterName"/>
+        <module name="InterfaceTypeParameterName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="LocalVariableName"/>
+
+        <!-- Javadoc 注释要求：public 类型与较长的 public 方法必须有注释，但不再对既有注释做内容强校验 -->
+        <module name="MissingJavadocType">
+            <property name="scope" value="public"/>
+            <property name="tokens" value="CLASS_DEF,INTERFACE_DEF,ENUM_DEF,ANNOTATION_DEF,RECORD_DEF"/>
+        </module>
+        <module name="MissingJavadocMethod">
+            <property name="scope" value="public"/>
+            <property name="minLineCount" value="2"/>
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <property name="allowedAnnotations" value="Override,Test"/>
+            <property name="tokens" value="METHOD_DEF,CTOR_DEF"/>
+        </module>
+        <module name="JavadocStyle">
+            <property name="scope" value="public"/>
+            <property name="checkFirstSentence" value="false"/>
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
+    </module>
+</module>

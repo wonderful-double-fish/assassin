@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: assassin-example
+
+# assassin-web 各能力默认开启，此处展示可配置项
+assassin:
+  web:
+    response-wrapper:
+      enabled: true
+    exception-handler:
+      enabled: true
+    trace-id:
+      enabled: true
+      header: X-Trace-Id
+    jackson:
+      enabled: true
+      date-time-format: "yyyy-MM-dd HH:mm:ss"
+      long-to-string: true
+      omit-null: true
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%X{traceId:-}] %msg%n"
