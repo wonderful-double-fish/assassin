@@ -23,7 +23,7 @@ allprojects {
 subprojects {
     // 对任意应用了 java 插件的子模块统一：版本管理（Spring Boot BOM）、JDK 21 toolchain、checkstyle
     plugins.withId("java") {
-        apply(plugin = "io.spring.dependency-management")
+        pluginManager.apply("io.spring.dependency-management")
         extensions.configure<DependencyManagementExtension> {
             imports {
                 // 第三方依赖版本统一由 Spring Boot BOM 管控，业务侧只需声明坐标、无需写版本
@@ -35,7 +35,8 @@ subprojects {
             toolchain.languageVersion.set(JavaLanguageVersion.of(21))
         }
 
-        apply(plugin = "checkstyle")
+        pluginManager.apply("checkstyle")
+
         extensions.configure<CheckstyleExtension> {
             // checkstyle 规则统一收敛到根工程 config/checkstyle/checkstyle.xml
             configDirectory.set(rootProject.file("config/checkstyle"))

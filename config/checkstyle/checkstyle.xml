@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
+<!--
+    DOCTYPE 的 SYSTEM 指向随仓库本地携带的 configuration_1_3.dtd，
+    便于 IDE（如 IntelliJ IDEA）在离线环境下解析 DTD，避免联网拉取 checkstyle.org。
+    checkstyle 工具本身会按 PUBLIC 标识从 classpath 加载同一份 DTD，不受 SYSTEM 影响。
+-->
 <!DOCTYPE module PUBLIC
     "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+    "./configuration_1_3.dtd">
 
 <!--
     assassin 工程代码规范检查规则。
