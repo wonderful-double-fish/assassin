@@ -4,8 +4,21 @@ pluginManagement {
         maven("https://maven.aliyun.com/repository/public")
         gradlePluginPortal()
         mavenCentral()
+        google()
     }
 }
+
+dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
+    repositories {
+        maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
+        maven("https://maven.aliyun.com/repository/public")
+        mavenCentral()
+        google()
+    }
+}
+
+println("settings.gradle.kts")
 
 rootProject.name = "assassin"
 
