@@ -1,6 +1,6 @@
 plugins {
     `java-library`
-    `maven-publish`
+    id("assassin.publish-conventions")
 }
 
 description = "assassin web autoconfigure"

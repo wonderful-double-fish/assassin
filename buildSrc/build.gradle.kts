@@ -9,10 +9,15 @@ repositories {
     maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
     maven("https://maven.aliyun.com/repository/public")
     mavenCentral()
+    gradlePluginPortal()
     google()
 }
 
 dependencies {
+    // 供 assassin.publish-conventions 应用 com.vanniktech.maven.publish
+    // 必须是 implementation：compileOnly 在子项目运行期会 NoClassDefFoundError
+    implementation("com.vanniktech:gradle-maven-publish-plugin:0.37.0")
+
     testImplementation(kotlin("test"))
 }
 
