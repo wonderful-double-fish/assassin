@@ -1,6 +1,5 @@
 plugins {
-    `java-library`
-    alias(libs.plugins.spring.boot)
+    id("assassin.deployed-conventions")
 }
 
 description = "assassin example"
@@ -10,9 +9,5 @@ dependencies {
 
     compileOnly("org.jspecify:jspecify")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
     testImplementation("org.springframework.boot:spring-boot-webmvc-test")
-
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

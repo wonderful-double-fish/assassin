@@ -1,6 +1,5 @@
 plugins {
-    `java-library`
-    id("assassin.publish-conventions")
+    id("assassin.service-conventions")
 }
 
 description = "assassin web autoconfigure"

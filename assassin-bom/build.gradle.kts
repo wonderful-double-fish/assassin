@@ -1,6 +1,5 @@
 plugins {
-    `java-platform`
-    id("assassin.publish-conventions")
+    id("assassin.bom-conventions")
 }
 
 description = "assassin bom"

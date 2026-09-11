@@ -1,6 +1,5 @@
 plugins {
-    `java-library`
-    id("assassin.publish-conventions")
+    id("assassin.service-conventions")
 }
 
 description = "assassin core"
@@ -8,4 +7,3 @@ description = "assassin core"
 dependencies {
     compileOnly("org.jspecify:jspecify")
 }
-
