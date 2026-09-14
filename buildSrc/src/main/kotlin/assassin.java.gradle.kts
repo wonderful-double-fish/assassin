@@ -4,16 +4,16 @@ import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.api.tasks.testing.Test
 
 /**
- * Assassin 基础 Java 约定插件。
+ * 【底层零件】Assassin Java 基础约定 —— 所有 Java 模块的共同底座。
  *
- * 统一维护「所有 Java 模块」都必须遵守的规则：
+ * 只做「任何 Java 模块都该有」的事，不判断模块角色：
  *  - `java-library`（提供 api / implementation 依赖划分）
  *  - JDK 21 toolchain、UTF-8 编译编码
- *  - 引入 Spring Boot BOM，版本从 buildSrc/build.gradle.kts 里声明的
- *    spring-boot-gradle-plugin 上读取，保证「构建期插件版本」与「BOM 版本」永远一致
+ *  - 引入 Spring Boot BOM（版本从构建期的 spring-boot-gradle-plugin 上读取，两者天然一致）
  *  - 单测统一 JUnit Platform
  *
- * 使用方式：`plugins { id("assassin.java-conventions") }`
+ * 一般不用直接引入它，而是引入角色插件 `assassin.library` / `assassin.spring-boot` / `assassin.app`。
+ * 使用方式：`plugins { id("assassin.java") }`
  */
 plugins {
     `java-library`

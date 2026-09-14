@@ -1,5 +1,5 @@
 plugins {
-    id("assassin.bom-conventions")
+    id("assassin.bom")
 }
 
 description = "assassin bom"

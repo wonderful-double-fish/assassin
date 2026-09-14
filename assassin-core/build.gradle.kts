@@ -1,5 +1,5 @@
 plugins {
-    id("assassin.service-conventions")
+    id("assassin.library")
 }
 
 description = "assassin core"

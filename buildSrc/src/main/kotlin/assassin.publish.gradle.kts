@@ -2,7 +2,7 @@ import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.gradle.plugins.signing.SigningExtension
 
 /**
- * Maven Central 发布约定插件（基于 com.vanniktech.maven.publish）。
+ * 【底层零件】Maven Central 发布约定插件（基于 com.vanniktech.maven.publish）。
  *  - 自动生成 sources / javadoc jar（java-platform 为空的对应 jar）
  *  - 版本号以 -SNAPSHOT 结尾时自动发布到 Central 的 snapshot 仓库，且 SNAPSHOT 不会被签名
  *  - POM 元数据统一在插件内维护
@@ -13,7 +13,7 @@ import org.gradle.plugins.signing.SigningExtension
  *      内存私钥：signingInMemoryKey / signingInMemoryKeyId / signingInMemoryKeyPassword
  *      本机 gpg-agent：signing.gnupg.keyName / signing.gnupg.passphrase / signing.gnupg.executable
  *
- * 使用方式：plugins { id("assassin.publish-conventions") }
+ * 使用方式：`plugins { id("assassin.publish") }`（通常由 `assassin.library` / `assassin.spring-boot` / `assassin.bom` 代为引入）
  */
 plugins {
     `maven-publish`

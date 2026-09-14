@@ -1,5 +1,5 @@
 plugins {
-    id("assassin.service-conventions")
+    id("assassin.spring-boot")
 }
 
 description = "assassin web autoconfigure"

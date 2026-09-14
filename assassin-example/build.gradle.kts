@@ -1,5 +1,5 @@
 plugins {
-    id("assassin.deployed-conventions")
+    id("assassin.app")
 }
 
 description = "assassin example"
