@@ -8,7 +8,6 @@ dependencies {
     implementation(libs.dependency.management.plugin)
     implementation(libs.checkstyle)
     implementation(libs.spring.javaformat.plugin)
-    // 自定义 checkstyle 配置单引用 Spring 检查模块，需要放到 checkstyle 工具 classpath
     implementation(libs.spring.javaformat.checkstyle)
 }
 

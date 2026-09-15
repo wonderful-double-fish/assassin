@@ -12,17 +12,7 @@ import org.gradle.api.plugins.quality.CheckstyleExtension
 import org.gradle.api.plugins.quality.CheckstylePlugin as GradleCheckstylePlugin
 import java.io.File
 
-/**
- * 【角色插件 / Binary Plugin】Assassin Checkstyle 代码规范检查。
- *
- * 关键点：本项目的配置单 `src/checkstyle/checkstyle.xml` 里引用了
- * `io.spring.javaformat.checkstyle.SpringChecks`（Spring 的检查模块），
- * 所以除了 checkstyle 本体，**还必须把 spring-javaformat-checkstyle 放到
- * checkstyle 工具的 classpath 上**，否则会报
- * `Unable to create Root Module: config {…}`。
- *
- * 依赖的版本通过 buildSrc 的版本目录读取，与 gradle/libs.versions.toml 保持单一来源。
- */
+
 class CheckstylePlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
