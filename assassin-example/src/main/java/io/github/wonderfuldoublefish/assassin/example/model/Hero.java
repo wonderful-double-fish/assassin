@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-/**
- * assassin-example 模型包.
- *
- * <p>
- * 存放用于演示序列化扩展的领域模型。
- */
-@NullMarked
 package io.github.wonderfuldoublefish.assassin.example.model;
 
-import org.jspecify.annotations.NullMarked;
+/**
+ * Hero class.
+ */
+public class Hero {
+
+}

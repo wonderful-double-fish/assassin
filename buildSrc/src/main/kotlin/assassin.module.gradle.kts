@@ -10,6 +10,7 @@ plugins {
     `java-library`
     id("io.spring.dependency-management")
     id("org.springframework.boot")
+    id("io.spring.javaformat")
 }
 
 apply(plugin = "assassin.checkstyle")
