@@ -2,11 +2,13 @@
 spring-boot = "4.1.1"
 dependency-management = "1.1.7"
 maven-publish-plugins = "0.37.0"
+checkstyle = "10.21.2"
 
 [libraries]
 maven-publish-plugin = { group = "com.vanniktech.maven.publish", name = "com.vanniktech.maven.publish.gradle.plugin", version.ref = "maven-publish-plugins" }
 spring-boot-plugin = { group = "org.springframework.boot", name = "spring-boot-gradle-plugin", version.ref = "spring-boot" }
 dependency-management-plugin = { group = "io.spring.gradle", name = "dependency-management-plugin", version.ref = "dependency-management" }
+checkstyle = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "checkstyle" }
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

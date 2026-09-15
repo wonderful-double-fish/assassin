@@ -12,6 +12,8 @@ plugins {
     id("org.springframework.boot")
 }
 
+apply(plugin = "assassin.checkstyle")
+
 extensions.configure<JavaPluginExtension> {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
@@ -22,10 +24,12 @@ extensions.configure<DependencyManagementExtension> {
     }
 }
 
-dependencies {
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
+configurations.getByName("testImplementation").dependencies.add(
+    project.dependencies.create("org.springframework.boot:spring-boot-starter-test"),
+)
+configurations.getByName("testRuntimeOnly").dependencies.add(
+    project.dependencies.create("org.junit.platform:junit-platform-launcher"),
+)
 
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
