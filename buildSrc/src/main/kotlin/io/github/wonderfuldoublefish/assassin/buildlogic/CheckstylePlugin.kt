@@ -4,6 +4,7 @@ import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
+import org.gradle.api.artifacts.ExternalModuleDependency
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.plugins.quality.Checkstyle
@@ -47,10 +48,23 @@ class CheckstylePlugin : Plugin<Project> {
             },
         )
 
-        // Spring 检查模块必须在 checkstyle 工具 classpath 上
+        // Spring 检查模块必须在 checkstyle 工具 classpath 上。
+        // 注意要排除它自带的 checkstyle 传递依赖：spring-javaformat-checkstyle 会拖入一个
+        // 较老的 checkstyle，与下面显式声明的版本冲突。不排除的话只能靠版本冲突解析
+        // 「碰巧」选到高版本；显式排除后，checkstyle 版本完全由 version catalog 决定。
+        val springCheckstyle = project.dependencies.create(
+            "$SPRING_CHECKSTYLE_GROUP:$SPRING_CHECKSTYLE_NAME:$springJavaformatVersion",
+        ) as ExternalModuleDependency
+        springCheckstyle.exclude(
+            mapOf(
+                "group" to CHECKSTYLE_GROUP,
+                "module" to CHECKSTYLE_NAME,
+            ),
+        )
+        project.dependencies.add(CHECKSTYLE_CONFIGURATION, springCheckstyle)
         project.dependencies.add(
             CHECKSTYLE_CONFIGURATION,
-            "$SPRING_CHECKSTYLE_GROUP:$SPRING_CHECKSTYLE_NAME:$springJavaformatVersion",
+            "$CHECKSTYLE_GROUP:$CHECKSTYLE_NAME:$checkstyleVersion",
         )
 
         // 测试代码不检查
@@ -100,6 +114,9 @@ class CheckstylePlugin : Plugin<Project> {
 
         const val SPRING_CHECKSTYLE_GROUP = "io.spring.javaformat"
         const val SPRING_CHECKSTYLE_NAME = "spring-javaformat-checkstyle"
+
+        const val CHECKSTYLE_GROUP = "com.puppycrawl.tools"
+        const val CHECKSTYLE_NAME = "checkstyle"
 
         const val CHECKSTYLE_TASK = "checkstyle"
         const val CHECKSTYLE_MAIN_TASK = "checkstyleMain"
