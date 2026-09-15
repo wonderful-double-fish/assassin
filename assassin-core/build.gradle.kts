@@ -1,5 +1,5 @@
 plugins {
-    id("assassin.library")
+    `java-library`
 }
 
 description = "assassin core"

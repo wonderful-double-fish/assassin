@@ -1,5 +1,6 @@
 plugins {
-    id("assassin.spring-boot")
+    `java-library`
+    id("assassin.deploy")
 }
 
 description = "assassin web autoconfigure"
