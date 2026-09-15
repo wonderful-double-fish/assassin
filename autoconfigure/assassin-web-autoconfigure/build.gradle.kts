@@ -1,5 +1,5 @@
 plugins {
-    `java-library`
+    id("assassin.module")
     id("assassin.deploy")
 }
 
@@ -21,8 +21,5 @@ dependencies {
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
-
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

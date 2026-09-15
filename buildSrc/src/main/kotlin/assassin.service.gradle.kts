@@ -1,23 +1,18 @@
 import org.gradle.api.tasks.bundling.Jar
-import org.gradle.kotlin.dsl.`java-library`
-import org.gradle.kotlin.dsl.named
 
 
 plugins {
-    `java-library`
-    id("org.springframework.boot")
+    id("assassin.module")
 }
 
 tasks.named<Jar>("jar") {
-    enabled = true
-    archiveClassifier.set("")
+    archiveClassifier.set("plain")
 }
 
 tasks.named("bootJar") {
-    enabled = false
+    enabled = true
 }
 
 tasks.named("bootRun") {
-    enabled = false
+    enabled = true
 }
-

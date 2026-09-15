@@ -1,4 +1,6 @@
+
 plugins {
     `java-platform`
-    id("assassin.deploy")
 }
+
+apply(plugin = "assassin.deploy")
